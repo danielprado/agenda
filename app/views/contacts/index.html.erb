@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contacts</h1>
+
+<p><%= search_form_for [@user,@q] do |f| %>
+
+  <%= f.label :name %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.label :surname %>
+  <%= f.search_field :surnames_cont %>
+
+  <%= f.submit %>
+<% end %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Surnames</th>
+      <th>Email</th>
+      <th>Category</th>
+      <th>Phones</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= image_tag contact.photo.url(:thumb) %> </td>
+        <td><%= contact.name %></td>
+        <td><%= contact.surnames %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.category %> </td>
+        <td>
+         <%contact.phones.each do |phone|%>
+          <p>
+           <%= phone.number %>
+          </p>
+        <%end%>
+        </td>
+        <td><%= link_to 'Show', [@user,contact] %></td>
+        <td><%= link_to 'Edit', edit_user_contact_path(@user,contact) %></td>
+        <td><%= link_to 'Destroy', [@user,contact], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contact', new_user_contact_path(@user) %>

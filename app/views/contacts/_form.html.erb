@@ -1,0 +1,50 @@
+<%= nested_form_for ([@user,@contact]) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+   <%= f.label :category %>
+   <%= f.select :category, options_for_select(Contact::CATEGORIES)%>
+  <div>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surnames %><br>
+    <%= f.text_field :surnames %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+  <%= f.file_field :photo %>
+  </div>
+
+  <h3> PHONES </h3>
+  <%=f.fields_for :phones, @contact.phones do |phone|%>
+   <p class="fields">
+   <%= phone.text_area :number %>
+   <%= phone.link_to_remove "Remove this phone" %>
+   <p>
+  <%end%>
+  <p><%= f.link_to_add "Add a phone", :phones %></p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

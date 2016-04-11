@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+pedro:
+  id: 1
+  name: "Pedro"
+  surnames: "Garcia Gonzalez"
+  email: "pedro@gmail.com"
+  category: "Familiares"
+  user_id: 1
+
+juan:
+  id: 2
+  name: "Juan"
+  surnames: "Suarez"
+  email: "juan@gmail.com"
+  category: "Amigos"
+  user_id: 1
+
+pablo:
+  id: 3
+  name: "Pablo"
+  surnames: "Velazquez"
+  email: "pedro@gmail.com"
+  category: "Compañeros"
+  user_id: 1

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= image_tag @contact.photo.url(:medium) %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>Surnames:</strong>
+  <%= @contact.surnames %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+ <strong>Category:</strong>
+ <%= @contact.category %>
+</p>
+
+<h3> PHONES </h3>
+<%@contact.phones.each do |phone|%>
+ <p>
+  <%= phone.number %>
+ </p>
+<%end%>
+
+<%= link_to 'Edit', edit_user_contact_path(@user,@contact) %> |
+<%= link_to 'Back', user_contacts_path(@user) %>
